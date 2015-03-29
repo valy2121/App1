@@ -20,27 +20,62 @@
     under the License.
 -->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <meta name="msapplication-tap-highlight" content="no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device</p>
-                <p class="event received">Device is Ready</p>
-            </div>
-        </div>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize("phonegap-start-master\movingshh");
-        </script>
-    </body>
+<head>
+<title>Demo of Image moving across screen in JavaScript</title>
+<script language='JavaScript' type='text/JavaScript'>
+<!--
+function reset1(){
+clearTimeout(my_time);
+document.getElementById('i1').style.left= "500px";
+document.getElementById('i1').style.top= "100px";
+document.getElementById("msg").innerHTML="";
+
+}
+
+
+
+function move_img(str) {
+
+var x=document.getElementById('i1').offsetTop;
+x= x +100;
+document.getElementById('i1').style.top= x + "px";
+
+}
+
+function disp(){
+var step=1; // Change this step value
+//alert("Hello");
+var y=document.getElementById('i1').offsetTop;
+var x=document.getElementById('i1').offsetLeft;
+if(y < 600 ){y= y +step;
+document.getElementById('i1').style.top= y + "px"; // vertical movment
+}else{
+if(x < 800){x= x +step;
+document.getElementById('i1').style.left= x + "px"; // horizontal movment
+}
+}
+//////////////////////
+
+}
+
+function timer(){
+disp();
+var y=document.getElementById('i1').offsetTop;
+var x=document.getElementById('i1').offsetLeft;
+document.getElementById("msg").innerHTML="X: " + x + " Y : " + y
+my_time=setTimeout('timer()',10);
+}
+
+
+//-->
+</script>
+</head>
+<body >
+<img src=help.jpeg id='i1' style="position:absolute; left: 500; top: 100;">
+<br><br><br><br>
+<input type=button onClick=timer() value='Start'>
+<input type=button onClick=reset1() value='Reset'>
+<div id='msg'></div>
+
+</body>
 </html>
